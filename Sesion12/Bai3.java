@@ -13,20 +13,15 @@ public class Bai3 {
         try {
             Connection conn = DriverManager.getConnection(url, user, password);
 
-            // Gọi stored procedure
             String sql = "{CALL GET_SURGERY_FEE(?, ?)}";
             CallableStatement cs = conn.prepareCall(sql);
 
-            // Set tham số IN
             cs.setInt(1, surgeryId);
 
-            // Đăng ký tham số OUT (DECIMAL)
             cs.registerOutParameter(2, Types.DECIMAL);
 
-            // Thực thi
             cs.execute();
 
-            // Lấy kết quả OUT
             double totalCost = cs.getDouble(2);
 
             System.out.println("Chi phí phẫu thuật: " + totalCost);

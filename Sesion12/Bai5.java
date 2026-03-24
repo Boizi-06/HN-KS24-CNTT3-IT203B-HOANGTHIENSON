@@ -50,7 +50,6 @@ public class Bai5 {
         }
     }
 
-    // 1. Danh sách bệnh nhân
     static void showPatients(Connection conn) throws Exception {
         String sql = "SELECT id, name, age, department FROM patient";
         PreparedStatement ps = conn.prepareStatement(sql);
@@ -68,7 +67,6 @@ public class Bai5 {
         ps.close();
     }
 
-    // 2. Thêm bệnh nhân (PreparedStatement chống SQL Injection)
     static void addPatient(Connection conn, Scanner sc) throws Exception {
         System.out.print("Tên: ");
         String name = sc.nextLine();
@@ -83,7 +81,7 @@ public class Bai5 {
         String sql = "INSERT INTO patient(name, age, department) VALUES (?, ?, ?)";
         PreparedStatement ps = conn.prepareStatement(sql);
 
-        ps.setString(1, name); // xử lý được L'Oréal
+        ps.setString(1, name);
         ps.setInt(2, age);
         ps.setString(3, dept);
 
@@ -93,7 +91,6 @@ public class Bai5 {
         ps.close();
     }
 
-    // 3. Cập nhật bệnh án
     static void updatePatient(Connection conn, Scanner sc) throws Exception {
         System.out.print("Nhập ID bệnh nhân: ");
         int id = sc.nextInt();
@@ -119,7 +116,6 @@ public class Bai5 {
         ps.close();
     }
 
-    // 4. Xuất viện + gọi Stored Procedure
     static void discharge(Connection conn, Scanner sc) throws Exception {
         System.out.print("Nhập ID bệnh nhân: ");
         int id = sc.nextInt();
@@ -136,7 +132,7 @@ public class Bai5 {
 
         double fee = cs.getDouble(2);
 
-        System.out.println("Tổng viện phí: " + fee);
+        System.out.println("Tổng viện phi:" + fee);
 
         cs.close();
     }

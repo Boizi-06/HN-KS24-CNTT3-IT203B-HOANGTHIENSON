@@ -8,7 +8,7 @@ public class Bai1 {
         String user = "root";
         String password = "123456";
 
-        String doctorCode = "input_code"; // giả lập input
+        String doctorCode = "input_code";
         String doctorPass = "input_pass";
 
         try {
@@ -17,7 +17,6 @@ public class Bai1 {
             String sql = "SELECT * FROM doctor WHERE doctor_code = ? AND password = ?";
             PreparedStatement ps = conn.prepareStatement(sql);
 
-            // Gán giá trị vào dấu ?
             ps.setString(1, doctorCode);
             ps.setString(2, doctorPass);
 

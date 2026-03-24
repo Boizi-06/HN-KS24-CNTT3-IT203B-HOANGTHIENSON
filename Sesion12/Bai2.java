@@ -8,9 +8,9 @@ public class Bai2 {
         String user = "root";
         String password = "123456";
 
-        int patientId = 1; // id bệnh nhân
-        double temperature = 37.5; // nhiệt độ
-        int heartRate = 80; // nhịp tim
+        int patientId = 1;
+        double temperature = 37.5;
+        int heartRate = 80;
 
         try {
             Connection conn = DriverManager.getConnection(url, user, password);
@@ -18,7 +18,6 @@ public class Bai2 {
             String sql = "UPDATE patient SET temperature = ?, heart_rate = ? WHERE id = ?";
             PreparedStatement ps = conn.prepareStatement(sql);
 
-            // Gán đúng kiểu dữ liệu
             ps.setDouble(1, temperature);
             ps.setInt(2, heartRate);
             ps.setInt(3, patientId);
